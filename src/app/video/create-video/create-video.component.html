@@ -1,0 +1,42 @@
+<h2>Ajouter une vidéo</h2>
+
+<form (ngSubmit)="addVideo()" #videoForm="ngForm">
+  <label for="id">id:</label>
+  <input type="number" id="id" name="id" [(ngModel)]="video.id" #id="ngModel" class="form-control">
+  <div *ngIf="id.invalid && (id.dirty || id.touched)" class="alert alert-danger">
+    <div *ngIf="id.errors?.['required']">
+      Id is required.
+    </div>
+  </div>
+
+  <label for="title">Titre:</label>
+  <input type="text" id="title" name="title" [(ngModel)]="video.title" pattern="[A-Z].*"
+    #title="ngModel" class="form-control">
+  <div *ngIf="title.invalid && (title.dirty || title.touched)" class="alert alert-danger">
+    <div *ngIf="title.errors?.['required']">
+      Title is required.
+    </div>
+    <div *ngIf="title.errors?.['pattern']">
+      Title should start with an uppercase letter.
+    </div>
+  </div>
+
+  <label for="genre">Genre:</label>
+  <input type="text" id="genre" name="genre" [(ngModel)]="video.genre" #genre="ngModel" class="form-control">
+  <div *ngIf="genre.invalid && (genre.dirty || genre.touched)" class="alert alert-danger">
+    <div *ngIf="genre.errors?.['required']">
+      Genre is required.
+    </div>
+    <div *ngIf="genre.value !== 'action' && genre.value !== 'documentaire' && genre.value !== 'comédie'">
+      Genre should be action, documentaire, or comédie.
+    </div>
+  </div>
+
+  <label for="public">Public:</label>
+  <input type="checkbox" id="public" name="public" [(ngModel)]="video.public">
+  <br>
+  <label for="nbshared">Nb Shared:</label>
+  <input type="number" id="nbshared" name="nbshared" [(ngModel)]="video.nbshared" #id="ngModel" class="form-control">
+<br>
+  <button type="submit" (click)="addVideo()" [disabled]="videoForm.invalid" class="btn btn-primary">Ajouter</button>
+</form>

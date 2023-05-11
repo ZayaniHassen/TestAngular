@@ -1,0 +1,18 @@
+{
+  "videos": [
+    {
+      "id": 1,
+      "title": "Titre Test",
+      "genre": "comédie",
+      "public": true,
+      "nbshared": 0
+    },
+    {
+      "id": 2,
+      "title": "Titre Test 2 ",
+      "genre": "action",
+      "public": true,
+      "nbshared": 10
+    }
+  ]
+}

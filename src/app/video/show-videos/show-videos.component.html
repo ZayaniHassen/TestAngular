@@ -1,0 +1,26 @@
+<h2>Liste des vidéos</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Titre</th>
+      <th>Genre</th>
+      <th>Public</th>
+      <th>Partages</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let video of videos">
+      <td>{{ video.id }}</td>
+      <td>{{ video.title }}</td>
+      <td>{{ video.genre }}</td>
+      <td>{{ video.public }}</td>
+      <td>{{ video.nbshared }}</td>
+      <td>
+        <button *ngIf="video.nbshared == 0" [routerLink]="['/editvideo',video.id]" class="btn btn-primary">Modifier</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
